@@ -2,15 +2,15 @@ import { NotFoundException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { NewAdvertisementInput } from './dto/new-advertisement.input';
 import { UpdateAdvertisementInput } from './dto/update-advertisement.input';
-import { AdvertisementGraphQlModel } from './models/advertisement.model';
+import { AdvertisementGraphQLModel } from './models/advertisement.model';
 import { AdvertisementsService } from './advertisements.service';
 
-@Resolver(of => AdvertisementGraphQlModel)
+@Resolver(of => AdvertisementGraphQLModel)
 export class AdvertisementsResolver {
   constructor(private readonly advertisementsService: AdvertisementsService) {}
 
-  @Query(returns => AdvertisementGraphQlModel)
-  async advertisement(@Args('id') id: string): Promise<AdvertisementGraphQlModel> {
+  @Query(returns => AdvertisementGraphQLModel)
+  async advertisement(@Args('id') id: string): Promise<AdvertisementGraphQLModel> {
     const advertisement = await this.advertisementsService.findOneById(id);
 
     if (!advertisement) {
@@ -20,16 +20,16 @@ export class AdvertisementsResolver {
     return advertisement;
   }
 
-  @Query(returns => [AdvertisementGraphQlModel])
-  advertisements(): Promise<AdvertisementGraphQlModel[]> {
+  @Query(returns => [AdvertisementGraphQLModel])
+  advertisements(): Promise<AdvertisementGraphQLModel[]> {
 
     return this.advertisementsService.findAll();
   }
 
-  @Mutation(returns => AdvertisementGraphQlModel)
+  @Mutation(returns => AdvertisementGraphQLModel)
   async addAdvertisement(
     @Args('newAdvertisementData') newAdvertisementData: NewAdvertisementInput,
-  ): Promise<AdvertisementGraphQlModel> {
+  ): Promise<AdvertisementGraphQLModel> {
     const advertisement = await this.advertisementsService.create(newAdvertisementData);
 
     return advertisement;

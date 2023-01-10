@@ -4,25 +4,26 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Advertisement, AdvertisementDocument } from './schemas/advertisement.schema';
 import { NewAdvertisementInput } from './dto/new-advertisement.input';
 import { UpdateAdvertisementInput } from './dto/update-advertisement.input';
-import { AdvertisementGraphQlModel } from './models/advertisement.model';
+import { AdvertisementGraphQLModel } from './models/advertisement.model';
 
 @Injectable()
 export class AdvertisementsService {
   constructor(@InjectModel(Advertisement.name) private advertisementModel: Model<AdvertisementDocument>) {}
 
-  async create(data: NewAdvertisementInput): Promise<AdvertisementGraphQlModel> {
+  async create(data: NewAdvertisementInput): Promise<AdvertisementGraphQLModel> {
     const createAdvertisement = new this.advertisementModel(data);
 
     return createAdvertisement.save();
   }
 
-  async findOneById(id: string): Promise<AdvertisementGraphQlModel> {
+  async findOneById(id: string): Promise<AdvertisementGraphQLModel> {
 
     return this.advertisementModel.findById(id).exec();
   }
 
-  async findAll(): Promise<AdvertisementGraphQlModel[]> {
+  async findAll(): Promise<AdvertisementGraphQLModel[]> {
 
+    console.log(await this.advertisementModel.find().exec());
     return this.advertisementModel.find().exec();
   }
 
