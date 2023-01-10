@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @upper on FIELD_DEFINITION
+
+"""advertisement"""
+type AdvertisementGraphQlModel {
+  product_id: Int!
+  valid_until: Date!
+  discount_percentage: Int!
+  title: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Query {
+  advertisement(id: String!): AdvertisementGraphQlModel!
+  advertisements: [AdvertisementGraphQlModel!]!
+}
+
+type Mutation {
+  addAdvertisement(newAdvertisementData: NewAdvertisementInput!): AdvertisementGraphQlModel!
+  updateAdvertisement(advertisementId: String!, updateAdvertisementData: UpdateAdvertisementInput!): Boolean!
+  removeAdvertisement(id: String!): Boolean!
+}
+
+input NewAdvertisementInput {
+  product_id: Int!
+  title: String!
+  valid_until: Date!
+  discount_percentage: Int!
+}
+
+input UpdateAdvertisementInput {
+  product_id: Int!
+  title: String!
+  valid_until: Date!
+  discount_percentage: Int!
+}
