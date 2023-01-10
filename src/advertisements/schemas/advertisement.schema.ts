@@ -12,7 +12,7 @@ export class Advertisement {
   title: string;
 
   @Prop({ required: true })
-  valid_unit: Date;
+  valid_until: Date;
 
   @Prop({ required: true })
   discount_percentage: number;
