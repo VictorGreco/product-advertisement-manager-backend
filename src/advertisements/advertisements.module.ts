@@ -6,7 +6,7 @@ import { AdvertisementsResolver } from './advertisements.resolver';
 import { AdvertisementsService } from './advertisements.service';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
+  imports: [MongooseModule.forFeature([{ name: Advertisement.name, schema: AdvertisementSchema }])],
   providers: [AdvertisementsResolver, AdvertisementsService, DateScalar],
 })
 export class AdvertisementsModule {}

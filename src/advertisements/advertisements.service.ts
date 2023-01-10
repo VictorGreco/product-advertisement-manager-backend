@@ -1,14 +1,14 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Advertisement, AdvertisementDocument } from './schemas/advertisement.schema';
+import { Advertisement as AdvertisementSchema, AdvertisementDocument } from './schemas/advertisement.schema';
 import { NewAdvertisementInput } from './dto/new-advertisement.input';
 import { UpdateAdvertisementInput } from './dto/update-advertisement.input';
 import { Advertisement } from './models/advertisement.model';
 
 @Injectable()
 export class AdvertisementsService {
-  constructor(@InjectModel(Advertisement.name) private advertisementModel: Model<AdvertisementDocument>) {}
+  constructor(@InjectModel(AdvertisementSchema.name) private advertisementModel: Model<AdvertisementDocument>) {}
 
   async create(data: NewAdvertisementInput): Promise<Advertisement> {
     const createAdvertisement = new this.advertisementModel(data);
