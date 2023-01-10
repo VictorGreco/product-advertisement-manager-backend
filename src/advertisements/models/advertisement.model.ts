@@ -1,11 +1,10 @@
 import { Directive, Int, Field, ID, ObjectType } from '@nestjs/graphql';
-import { ObjectId, Types } from 'mongoose';
 
 @ObjectType({ description: 'advertisement' })
 export class AdvertisementGraphQLModel {
 
-  @Field()
-  _id: Types.ObjectId;
+  @Field(type => ID)
+  _id: any;
 
   @Field(type => Int)
   product_id: number;
