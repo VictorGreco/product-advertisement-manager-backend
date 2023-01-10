@@ -7,7 +7,7 @@ import { AdvertisementsService } from './advertisements.service';
 
 @Resolver(of => Advertisement)
 export class AdvertisementsResolver {
-  constructor(private readonly advertisementsService: AdvertisementService) {}
+  constructor(private readonly advertisementsService: AdvertisementsService) {}
 
   @Query(returns => Advertisement)
   async advertisement(@Args('id') id: string): Promise<Advertisement> {
@@ -30,7 +30,7 @@ export class AdvertisementsResolver {
   async addAdvertisement(
     @Args('newAdvertisementData') newAdvertisementData: NewAdvertisementInput,
   ): Promise<Advertisement> {
-    const advertisement = await this.advertisementService.create(newAdvertisementData);
+    const advertisement = await this.advertisementsService.create(newAdvertisementData);
 
     return advertisement;
   }
@@ -40,13 +40,13 @@ export class AdvertisementsResolver {
     @Args('advertisementId') advertisementId: string,
     @Args('updateAdvertisementData') updateAdvertisementData: UpdateAdvertisementInput,
   ): Promise<Advertisement> {
-    const advertisement = await this.advertisementService.update(advertisementId, updateAdvertisementData);
+    const advertisement = await this.advertisementsService.update(advertisementId, updateAdvertisementData);
 
     return advertisement;
   }
 
   @Mutation(returns => Boolean)
   async removeAdvertisement(@Args('id') id: string) {
-    return this.advertisementService.remove(id);
+    return this.advertisementsService.remove(id);
   }
 }
