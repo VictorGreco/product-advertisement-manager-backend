@@ -6,4 +6,4 @@ import { AdvertisementsService } from './advertisements.service';
 @Module({
   providers: [AdvertisementsResolver, AdvertisementsService, DateScalar],
 })
-export class RecipesModule {}
+export class AdvertisementsModule {}
