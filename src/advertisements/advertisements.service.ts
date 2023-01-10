@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { NewAdvertisementInput } from './dto/new-advertisement.input';
 import { UpdateAdvertisementInput } from './dto/update-advertisement.input';
-import { AdvertisementsArgs } from './dto/advertisements.args';
 import { Advertisement } from './models/advertisement.model';
 
 @Injectable()

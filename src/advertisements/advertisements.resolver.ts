@@ -2,13 +2,12 @@ import { NotFoundException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { NewAdvertisementInput } from './dto/new-advertisement.input';
 import { UpdateAdvertisementInput } from './dto/update-advertisement.input';
-import { AdvertisementsArgs } from './dto/advertisements.args';
 import { Advertisement } from './models/advertisement.model';
 import { AdvertisementsService } from './advertisements.service';
 
 @Resolver(of => Advertisement)
-export class AdvertisementResolver {
-  constructor(private readonly advertisementService: AdvertisementService) {}
+export class AdvertisementsResolver {
+  constructor(private readonly advertisementsService: AdvertisementService) {}
 
   @Query(returns => Advertisement)
   async advertisement(@Args('id') id: string): Promise<Advertisement> {
