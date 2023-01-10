@@ -2,15 +2,15 @@ import { NotFoundException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { NewAdvertisementInput } from './dto/new-advertisement.input';
 import { UpdateAdvertisementInput } from './dto/update-advertisement.input';
-import { Advertisement } from './models/advertisement.model';
+import { AdvertisementGraphQlModel } from './models/advertisement.model';
 import { AdvertisementsService } from './advertisements.service';
 
-@Resolver(of => Advertisement)
+@Resolver(of => AdvertisementGraphQlModel)
 export class AdvertisementsResolver {
   constructor(private readonly advertisementsService: AdvertisementsService) {}
 
-  @Query(returns => Advertisement)
-  async advertisement(@Args('id') id: string): Promise<Advertisement> {
+  @Query(returns => AdvertisementGraphQlModel)
+  async advertisement(@Args('id') id: string): Promise<AdvertisementGraphQlModel> {
     const advertisement = await this.advertisementsService.findOneById(id);
 
     if (!advertisement) {
@@ -20,29 +20,28 @@ export class AdvertisementsResolver {
     return advertisement;
   }
 
-  @Query(returns => [Advertisement])
-  advertisements(): Promise<Advertisement[]> {
+  @Query(returns => [AdvertisementGraphQlModel])
+  advertisements(): Promise<AdvertisementGraphQlModel[]> {
 
     return this.advertisementsService.findAll();
   }
 
-  @Mutation(returns => Advertisement)
+  @Mutation(returns => AdvertisementGraphQlModel)
   async addAdvertisement(
     @Args('newAdvertisementData') newAdvertisementData: NewAdvertisementInput,
-  ): Promise<Advertisement> {
+  ): Promise<AdvertisementGraphQlModel> {
     const advertisement = await this.advertisementsService.create(newAdvertisementData);
 
     return advertisement;
   }
 
-  @Mutation(returns => Advertisement)
+  @Mutation(returns => Boolean)
   async updateAdvertisement(
     @Args('advertisementId') advertisementId: string,
     @Args('updateAdvertisementData') updateAdvertisementData: UpdateAdvertisementInput,
-  ): Promise<Advertisement> {
-    const advertisement = await this.advertisementsService.update(advertisementId, updateAdvertisementData);
+  ) {
 
-    return advertisement;
+    return this.advertisementsService.update(advertisementId, updateAdvertisementData);
   }
 
   @Mutation(returns => Boolean)

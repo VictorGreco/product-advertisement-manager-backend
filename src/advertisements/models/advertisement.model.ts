@@ -1,10 +1,7 @@
 import { Directive, Int, Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType({ description: 'advertisement' })
-export class Advertisement {
-  @Field(type => ID)
-  id: string;
-
+export class AdvertisementGraphQlModel {
   @Field(type => Int)
   product_id: number;
 

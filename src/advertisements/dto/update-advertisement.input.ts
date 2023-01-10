@@ -1,5 +1,5 @@
 import { Field, Int, InputType } from '@nestjs/graphql';
-import { IsOptional, Length, MaxLength } from 'class-validator';
+import { MaxLength } from 'class-validator';
 
 @InputType()
 export class UpdateAdvertisementInput {
