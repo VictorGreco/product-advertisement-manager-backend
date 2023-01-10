@@ -5,7 +5,8 @@
 directive @upper on FIELD_DEFINITION
 
 """advertisement"""
-type AdvertisementGraphQlModel {
+type AdvertisementGraphQLModel {
+  _id: ID!
   product_id: Int!
   valid_until: Date!
   discount_percentage: Int!
@@ -16,12 +17,12 @@ type AdvertisementGraphQlModel {
 scalar Date
 
 type Query {
-  advertisement(id: String!): AdvertisementGraphQlModel!
-  advertisements: [AdvertisementGraphQlModel!]!
+  advertisement(id: String!): AdvertisementGraphQLModel!
+  advertisements: [AdvertisementGraphQLModel!]!
 }
 
 type Mutation {
-  addAdvertisement(newAdvertisementData: NewAdvertisementInput!): AdvertisementGraphQlModel!
+  addAdvertisement(newAdvertisementData: NewAdvertisementInput!): AdvertisementGraphQLModel!
   updateAdvertisement(advertisementId: String!, updateAdvertisementData: UpdateAdvertisementInput!): Boolean!
   removeAdvertisement(id: String!): Boolean!
 }
