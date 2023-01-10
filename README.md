@@ -110,6 +110,8 @@ You can run this service locally or use the up and running deployed version.
 
 I enabled the build in graphql playground so do not miss the change to play a bit!
 
+And remember the deployed version works under POSTs requests not GETs.
+
 - Access [localhost:5000](localhost:5000) if you are running this locally.
 - Access the [deployed demo](https://product-advertisement-manager.herokuapp.com/graphql) if you want to try the deployed version.
 
