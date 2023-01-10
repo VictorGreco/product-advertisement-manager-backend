@@ -110,7 +110,7 @@ You can run this service locally or use the up and running deployed version.
 
 I enabled the build in graphql playground so do not miss the change to play a bit!
 
-- Access [localhost:3000](localhost:3000) if you are running this locally.
+- Access [localhost:5000](localhost:5000) if you are running this locally.
 - Access the [deployed demo](https://product-advertisement-manager.herokuapp.com/graphql) if you want to try the deployed version.
 
 **Get one advertisement by id**
