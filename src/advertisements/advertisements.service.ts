@@ -28,7 +28,7 @@ export class AdvertisementsService {
   }
 
   async update(id: any, data: UpdateAdvertisementInput): Promise<boolean> {
-    await this.advertisementModel.update({ id }, data);
+    await this.advertisementModel.updateOne({ id }, data);
   
     return true;
   }
